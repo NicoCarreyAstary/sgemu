@@ -1,7 +1,7 @@
 package Extractor
 
 import (
-	. "github.com/sinni800/sgemu/Data"  
+	. "github.com/sinni800/NicoCarreyAstary/Data"  
 	//"Data/xml"
 	"encoding/xml"
 	"bufio"
