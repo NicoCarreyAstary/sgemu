@@ -1,7 +1,7 @@
 package Data
 
 import (
-	C "github.com/sinni800/sgemu/Core"
+	C "github.com/sinni800/NicoCarreyAstary/Core"
 	"encoding/xml"
 	//"encoding/xml"
 	"fmt"
