@@ -1,44 +1,48 @@
 #!/bin/bash
 
-GO_PATH="$HOME/go"
-SRC_PATH="${GO_PATH}/src/github.com/NicoCarreyAstary/sgemu"
-PACKAGES="Data/Extractor LoginServer GameServer"
-BUILD_PATH="$HOME/sgemu/binaries"
+# 项目根路径（自动检测脚本所在位置）
+PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
+BUILD_PATH="${PROJECT_ROOT}/binaries"
 
-export GOPATH="${GO_PATH}"
+# 模块及其入口文件配置
+declare -A MODULES
+MODULES["Data/Extractor"]="main/ExtractorMain.go"
+MODULES["LoginServer"]="main/LoginServer.go"
+MODULES["GameServer"]="main/GameServer.go"
 
-if [[ ! -d $GO_PATH ]]; then
-    echo "GO_PATH not found, creating at $GO_PATH"
-    mkdir $GO_PATH
-fi
+echo "📦 Go Modules 构建模式（输出 Windows 可执行文件）"
+echo "📁 项目路径: $PROJECT_ROOT"
+echo "📂 输出目录: $BUILD_PATH"
+mkdir -p "$BUILD_PATH"
 
-if [[ ! -d $BUILD_PATH ]]; then
-    echo "BUILD_PATH not found, creating at $BUILD_PATH"
-    mkdir $BUILD_PATH
-fi
+# 遍历构建
+for PACKAGE in "${!MODULES[@]}"; do
+    ENTRY_REL_PATH="${MODULES[$PACKAGE]}"
+    MODULE_PATH="${PROJECT_ROOT}/${PACKAGE}/${ENTRY_REL_PATH}"
 
-# Get source
+    MODULE_NAME=$(basename "$PACKAGE")
+    OUTPUT_DIR="${BUILD_PATH}/${MODULE_NAME}"
+    OUTPUT_FILE="${OUTPUT_DIR}/${MODULE_NAME}.exe"
 
-for PACKAGE in $PACKAGES; do
-    echo "Grabbing source: $PACKAGE"
-    go get -u github.com/NicoCarreyAstary/sgemu/"${PACKAGE}" || exit "Failed"
-done
+    echo ""
+    echo "🔨 编译模块: $PACKAGE"
+    echo "📄 入口文件: $MODULE_PATH"
+    echo "📁 输出到: $OUTPUT_FILE"
 
-# Do Build
+    mkdir -p "$OUTPUT_DIR"
 
-for PACKAGE in $PACKAGES; do
-    if [[ $PACKAGE = "Data/Extractor" ]]; then
-        OUTPUT_NAME="Extractor"
+    if [[ -f "$MODULE_PATH" ]]; then
+        cd "$(dirname "$MODULE_PATH")" || exit 1
+        GOOS=windows GOARCH=amd64 go build -o "$OUTPUT_FILE" "$(basename "$MODULE_PATH")" && {
+            echo "✅ 编译成功: $OUTPUT_FILE"
+        } || {
+            echo "❌ 编译失败: $MODULE_NAME"
+            exit 1
+        }
     else
-        OUTPUT_NAME="${PACKAGE}"
+        echo "⚠️ 找不到入口文件，跳过：$MODULE_PATH"
     fi
-
-    if [[ ! -d "$BUILD_PATH/${OUTPUT_NAME}" ]]; then
-        echo "${BUILD_PATH}/${OUTPUT_NAME} not found, creating"
-        mkdir "${BUILD_PATH}/${OUTPUT_NAME}"
-    fi
-
-    echo "Building ${OUTPUT_NAME}"
-    cd "$SRC_PATH/${PACKAGE}/main"
-    go build -o "${BUILD_PATH}/${OUTPUT_NAME}/${OUTPUT_NAME}"
 done
+
+echo ""
+echo "🎉 所有模块编译完成，Windows 版可执行文件已生成。"

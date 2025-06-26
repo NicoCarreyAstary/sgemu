@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	. "github.com/NicoCarreyAstary/sgemu/Data/Extractor"
 )
 
 // Args: use like extractor.exe "game path"

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	C "github.com/NicoCarreyAstary/sgemu/Core"
+	D "github.com/NicoCarreyAstary/sgemu/Data"
 	. "github.com/NicoCarreyAstary/sgemu/LoginServer"
 	"github.com/NicoCarreyAstary/sgemu/SG"
 	"log"
