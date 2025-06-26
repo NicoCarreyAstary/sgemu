@@ -1,8 +1,8 @@
 package GameServer
 
 import (
-	. "github.com/sinni800/sgemu/Data"
-	. "github.com/sinni800/sgemu/SG"
+	. "github.com/NicoCarreyAstary/sgemu/Data"
+	. "github.com/NicoCarreyAstary/sgemu/SG"
 )
 
 func OnWelcome(c *GClient, p *SGPacket) {

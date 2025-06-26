@@ -1,7 +1,7 @@
 package Data
 
 import "strings"
-import "github.com/sinni800/NicoCarreyAstary/SG"
+import "github.com/NicoCarreyAstary/sgemu/SG"
 
 type UnitGroupData struct {
 	ID       uint16      `xml:",attr"`
@@ -86,22 +86,22 @@ func CreateUnit(unitName string) *UnitDB {
 	return &UnitDB{NewID(), 1, unit.Health, 0, 0, unitName, unitName, items[:]}
 }
 
-//Unit Quality
+// Unit Quality
 func (u *Unit) UQ() byte {
 	return u.Level + (u.Owner.Clout / 2)
 }
 
-//Max Weight
+// Max Weight
 func (u *Unit) MaxWeight() uint16 {
 	return uint16(float32(u.Data.Max_Weight) * (1 + (float32(u.Owner.MechApt) / 120)))
 }
 
-//Alien Tech Level
+// Alien Tech Level
 func (u *Unit) ATL() byte {
 	return u.Level + ((u.Owner.MechApt + u.Owner.Education) / 2)
 }
 
-//Tech Level
+// Tech Level
 func (u *Unit) TL() byte {
 	return u.Level + (u.Owner.Education / 2)
 }

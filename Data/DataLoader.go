@@ -1,8 +1,8 @@
 package Data
 
 import (
-	C "github.com/sinni800/NicoCarreyAstary/Core"
 	"encoding/xml"
+	C "github.com/NicoCarreyAstary/sgemu/Core"
 	//"encoding/xml"
 	"fmt"
 	"log"

@@ -1,9 +1,9 @@
-//Package Extractor provides function to extract game data to xmls.
+// Package Extractor provides function to extract game data to xmls.
 package Extractor
 
 import (
 	"bufio"
-	. "github.com/sinni800/sgemu/Data"
+	. "github.com/NicoCarreyAstary/sgemu/Data"
 	"log"
 	"os"
 )
@@ -29,9 +29,9 @@ var (
 	fileHelper    *os.File
 )
 
-//Path: Game folder.
+// Path: Game folder.
 //
-//outpath: xmls output path.
+// outpath: xmls output path.
 func ReadFiles(path string, outpath string) {
 	defer Panic()
 

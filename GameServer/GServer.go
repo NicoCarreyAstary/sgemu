@@ -1,9 +1,9 @@
 package GameServer
 
 import (
-	"github.com/sinni800/sgemu/Core"
-	"github.com/sinni800/sgemu/Data"
-	. "github.com/sinni800/sgemu/SG"
+	"github.com/NicoCarreyAstary/sgemu/Core"
+	"github.com/NicoCarreyAstary/sgemu/Data"
+	. "github.com/NicoCarreyAstary/sgemu/SG"
 	"net"
 	"net/rpc"
 	"strconv"

@@ -3,11 +3,11 @@ package Extractor
 import (
 	"encoding/xml"
 	//"encoding/xml"
-	. "github.com/sinni800/sgemu/SG"
 	. "encoding/binary"
+	. "github.com/NicoCarreyAstary/sgemu/SG"
 	"os"
-	//"fmt" 
-	. "github.com/sinni800/sgemu/Data"
+	//"fmt"
+	. "github.com/NicoCarreyAstary/sgemu/Data"
 	"log"
 )
 
@@ -31,8 +31,8 @@ func ExtractItems(path string, outpath string, ItemExtractDone chan bool) {
 	ReadItems(f)
 
 	type dummyXML struct {
-		XMLName       xml.Name `xml:"Items"`
-		ItemDataGroup []*ItemDataGroup  `xml:"ItemGroup"`
+		XMLName       xml.Name         `xml:"Items"`
+		ItemDataGroup []*ItemDataGroup `xml:"ItemGroup"`
 	}
 
 	gmap := make(map[uint16]*ItemDataGroup)
@@ -54,7 +54,7 @@ func ExtractItems(path string, outpath string, ItemExtractDone chan bool) {
 		l.ItemDataGroup = append(l.ItemDataGroup, g)
 	}
 
-	b,e := xml.MarshalIndent(l,"","\t")
+	b, e := xml.MarshalIndent(l, "", "\t")
 	if e != nil {
 		log.Panicln(e)
 	}
@@ -228,7 +228,7 @@ func ReadItems(file *os.File) {
 			e = Read(file, BigEndian, &item.Armor)
 			if e != nil {
 				log.Panicf("Read name Armor iter:%d err:%v ", i, e)
-			} 
+			}
 
 		case Bonus:
 			e = Read(file, LittleEndian, &item.ItemType)

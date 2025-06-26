@@ -1,8 +1,8 @@
 package SG
 
 import (
-	C "github.com/sinni800/sgemu/Core"
 	"fmt"
+	C "github.com/NicoCarreyAstary/sgemu/Core"
 	"io"
 	"strings"
 )
@@ -125,7 +125,7 @@ func (packet *SGPacket) ReadPacketFromStream(Reader io.Reader, callback func(*SG
 
 		//Check header byte
 		if p.ReadByte() != 0xAA {
-			//AA == SG Packet 
+			//AA == SG Packet
 			panic("Wrong packet header")
 			//client.Log().Printf("Wrong packet header")
 			//client.Log().Printf("% #X", p.Buffer[:size])

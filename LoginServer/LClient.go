@@ -1,9 +1,8 @@
 package LoginServer
 
 import (
-	C "github.com/sinni800/sgemu/Core"
-	D "github.com/sinni800/sgemu/Data"
-	. "github.com/sinni800/sgemu/SG"
+	C "github.com/NicoCarreyAstary/sgemu/Core"
+	D "github.com/NicoCarreyAstary/sgemu/Data"
 )
 
 type LClient struct {

@@ -1,11 +1,11 @@
 package main
 
 import (
-	C "github.com/sinni800/sgemu/Core"
-	D "github.com/sinni800/sgemu/Data"
-	. "github.com/sinni800/sgemu/GameServer"
-	"github.com/sinni800/sgemu/SG"
 	"fmt"
+	C "github.com/NicoCarreyAstary/sgemu/Core"
+	D "github.com/NicoCarreyAstary/sgemu/Data"
+	. "github.com/NicoCarreyAstary/sgemu/GameServer"
+	"github.com/NicoCarreyAstary/sgemu/SG"
 	"log"
 	"os"
 	"os/signal"
@@ -35,7 +35,7 @@ func main() {
 	Server = new(GServer)
 	Server.Start("GameServer", SG.Config.GSConfig.IP, SG.Config.GSConfig.Port, SG.Config.GSConfig.WANIP)
 
-	//go WebAdmin.Start(GS.Server.Log) 
+	//go WebAdmin.Start(GS.Server.Log)
 	go ListenSignals()
 
 	CMD()

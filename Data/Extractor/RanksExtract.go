@@ -3,11 +3,11 @@ package Extractor
 import (
 	"encoding/xml"
 	//"encoding/xml"
-	//. "github.com/sinni800/sgemu/SG"
+	//. "github.com/NicoCarreyAstary/sgemu/SG"
 	. "encoding/binary"
 	"os"
-	//"fmt" 
-	. "github.com/sinni800/sgemu/Data"
+	//"fmt"
+	. "github.com/NicoCarreyAstary/sgemu/Data"
 	"log"
 )
 
@@ -32,14 +32,14 @@ func ExtractRanks(path string, outpath string, RanksExtractDone chan bool) {
 	ReadRanks(f)
 
 	type dummyXML struct {
-		XMLName       xml.Name 	   `xml:"Ranks"`
-		Ranks 	      []*RankData  `xml:"Rank"`
+		XMLName xml.Name    `xml:"Ranks"`
+		Ranks   []*RankData `xml:"Rank"`
 	}
-	
+
 	l := &dummyXML{}
 	l.Ranks = RanksData
 
-	b,e := xml.MarshalIndent(l,"","\t")
+	b, e := xml.MarshalIndent(l, "", "\t")
 	if e != nil {
 		log.Panicln(e)
 	}
@@ -93,7 +93,7 @@ func ReadRanks(file *os.File) {
 			r = &RankData{Level: level}
 			m[level] = r
 		}
-		
+
 		e = Read(file, BigEndian, &r.Unk)
 		checkError(e, "dtype")
 
@@ -117,10 +117,10 @@ func ReadRanks(file *os.File) {
 		case Organic:
 			r.Organic = string(nameb)
 		}
-	} 
-	
+	}
+
 	i := 0
-	for _,rank := range m {
+	for _, rank := range m {
 		RanksData[i] = rank
 		i++
 	}

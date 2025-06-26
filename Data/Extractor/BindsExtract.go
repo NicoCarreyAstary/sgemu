@@ -1,15 +1,15 @@
 package Extractor
 
 import (
-	. "github.com/sinni800/NicoCarreyAstary/Data"  
+	. "github.com/NicoCarreyAstary/sgemu/Data"
 	//"Data/xml"
-	"encoding/xml"
 	"bufio"
+	"encoding/xml"
 	"log"
 	"os"
 	"strconv"
 	"strings"
-) 
+)
 
 func ExtractNtt(path string, outpath string, NttExtractDone chan bool) {
 	defer Panic()
@@ -123,7 +123,7 @@ func ExtractNtt(path string, outpath string, NttExtractDone chan bool) {
 	l := BindingFile{}
 	l.Groups = BindingGroups
 
-	b,e := xml.MarshalIndent(l,"","\t")
+	b, e := xml.MarshalIndent(l, "", "\t")
 	if e != nil {
 		log.Panicln(e)
 	}

@@ -1,8 +1,7 @@
 package LoginServer
 
 import (
-	"github.com/sinni800/sgemu/Core"
-	. "github.com/sinni800/sgemu/SG"
+	"github.com/NicoCarreyAstary/sgemu/Core"
 	"net"
 	"strconv"
 )

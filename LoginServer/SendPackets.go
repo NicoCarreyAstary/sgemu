@@ -1,8 +1,8 @@
 package LoginServer
 
 import (
-	. "github.com/sinni800/sgemu/SG"
-) 
+	. "github.com/NicoCarreyAstary/sgemu/SG"
+)
 
 func SendMessage(c *LClient, errcode int, msg string) {
 	packet := NewPacket2(len(msg) + 20)
@@ -28,7 +28,7 @@ func SendToGameServer(c *LClient, username string) {
 	packet.Index--
 	ip := []byte(GSAddr.IP.To4())
 	packet.WriteBytes([]byte{ip[3], ip[2], ip[1], ip[0]})
-	
+
 	packet.WriteUInt16(uint16(GSAddr.Port))
 	packet.WriteByte(0x0c)
 	packet.WriteByte(1)
