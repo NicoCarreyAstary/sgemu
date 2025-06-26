@@ -1,7 +1,7 @@
 #!/bin/bash
 
 GO_PATH="$HOME/go"
-SRC_PATH="${GO_PATH}/src/github.com/hjf288/sgemu"
+SRC_PATH="${GO_PATH}/src/github.com/NicoCarreyAstary/sgemu"
 PACKAGES="Data/Extractor LoginServer GameServer"
 BUILD_PATH="$HOME/sgemu/binaries"
 
@@ -21,7 +21,7 @@ fi
 
 for PACKAGE in $PACKAGES; do
     echo "Grabbing source: $PACKAGE"
-    go get -u github.com/hjf288/sgemu/"${PACKAGE}" || exit "Failed"
+    go get -u github.com/NicoCarreyAstary/sgemu/"${PACKAGE}" || exit "Failed"
 done
 
 # Do Build
