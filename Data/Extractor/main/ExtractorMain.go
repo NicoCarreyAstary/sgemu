@@ -1,12 +1,11 @@
 package main
 
 import (
-	. "github.com/hjf288/NicoCarreyAstary/Data/Extractor"
 	"flag"
 	"fmt"
 )
 
-//Args: use like extractor.exe "game path"
+// Args: use like extractor.exe "game path"
 func main() {
 	flag.Parse()
 	args := flag.Args()

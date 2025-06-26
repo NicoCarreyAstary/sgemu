@@ -1,16 +1,15 @@
 package main
 
 import (
-	C "github.com/hjf288/sgemu/Core"
-	D "github.com/hjf288/sgemu/Data"
-	. "github.com/hjf288/sgemu/LoginServer"
-	"github.com/hjf288/sgemu/SG"
 	"fmt"
+	C "github.com/NicoCarreyAstary/sgemu/Core"
+	. "github.com/NicoCarreyAstary/sgemu/LoginServer"
+	"github.com/NicoCarreyAstary/sgemu/SG"
 	"log"
 	"os"
 	"os/signal"
 	"runtime"
-	//"WebAdmin" 
+	//"WebAdmin"
 )
 
 var (
